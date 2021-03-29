@@ -4,7 +4,7 @@
   <!-- IMU -->>
   <gazebo>
     <plugin name="imu_controller" filename="libhector_gazebo_ros_imu.so">
-      <robotNamespace>$(arg namespace)</robotNamespace>
+      <robotNamespace>/$(arg namespace)</robotNamespace>
       <updateRate>50.0</updateRate>
       <bodyName>$(arg suffix_ns)base_link</bodyName>
       <frameId>$(arg suffix_ns)base_link</frameId>
@@ -21,7 +21,7 @@
   <!-- GPS -->>
   <gazebo>
     <plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
-      <robotNamespace>$(arg namespace)</robotNamespace>
+      <robotNamespace>/$(arg namespace)</robotNamespace>
       <updateRate>40</updateRate>
       <bodyName>$(arg suffix_ns)base_link</bodyName>
       <frameId>$(arg suffix_ns)base_link</frameId>
