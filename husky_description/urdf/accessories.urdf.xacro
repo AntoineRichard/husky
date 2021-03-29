@@ -28,7 +28,7 @@
   
   <xacro:if value="$(arg laser_enabled)">
 
-    <sick_lms1xx_mount prefix="base" topic="scan" suffix_ns="$(arg suffix_ns)"/>
+    <sick_lms1xx_mount prefix="base" topic="front/scan" suffix_ns="$(arg suffix_ns)"/>
 
     <!--sick_lms1xx frame="$(arg suffix_ns)base_laser" topic="scan" robot_namespace="$(arg suffix_ns)"/-->
 
