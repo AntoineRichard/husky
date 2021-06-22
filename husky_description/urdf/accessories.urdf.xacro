@@ -4,7 +4,11 @@
   <xacro:include filename="$(find husky_description)/urdf/accessories/intel_realsense.urdf.xacro"/>
   <xacro:include filename="$(find husky_description)/urdf/accessories/sick_lms1xx_mount.urdf.xacro"/>
   <xacro:include filename="$(find husky_description)/urdf/accessories/sensor_arch.urdf.xacro"/>
+  <xacro:include filename="$(find husky_description)/urdf/accessories/os1.urdf.xacro"/>
 
+  <xacro:arg name="os1_xyz" default="$(optenv HUSKY_OS1_XYZ 0.32 0.0 0.04)" />
+  <xacro:arg name="os1_rpy" default="$(optenv HUSKY_OS1_RPY 0.0 0.0 0.0)" />
+  
   <xacro:arg name="laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ 0.2206 0.0 0.00635)" />
   <xacro:arg name="laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 0.0)" />
 
@@ -36,6 +40,18 @@
       <origin xyz="$(arg laser_xyz)" rpy="$(arg laser_rpy)" />
       <parent link="$(arg suffix_ns)top_plate_link" />
       <child link="$(arg suffix_ns)base_laser_mount" />
+    </joint>
+
+  </xacro:if>
+  
+  <xacro:if value="$(arg os1_enabled)">
+
+    <OS1-16 frame="$(arg suffix_ns)os1" topic="$(arg suffix_ns)os1_cloud_node/points" />
+
+    <joint name="$(arg suffix_ns)laser_mount_joint" type="fixed">
+      <origin xyz="$(arg os1_xyz)" rpy="$(arg os1_rpy)" />
+      <parent link="$(arg suffix_ns)top_plate_link" />
+      <child link="$(arg suffix_ns)os1" />
     </joint>
 
   </xacro:if>

@@ -28,12 +28,14 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <arg name="namespace" default=""/>
   <arg name="laser_enabled" default="$(optenv HUSKY_LMS1XX_ENABLED false)"/>
   <arg name="realsense_enabled" default="$(optenv HUSKY_REALSENSE_ENABLED false)"/>
+  <arg name="os1_enabled" default="$(optenv HUSKY_OS1_ENABLED false)"/>
   <arg name="urdf_extras" default="$(optenv HUSKY_URDF_EXTRAS)"/>
 
   <group if="$(eval namespace == '')" >
     <param name="robot_description"
             command="$(find xacro)/xacro '$(find husky_description)/urdf/husky.urdf.xacro'
             laser_enabled:=$(arg laser_enabled)
+            os1_enabled:=$(arg os1_enabled)
             realsense_enabled:=$(arg realsense_enabled)
             urdf_extras:=$(arg urdf_extras)
             " />
@@ -44,6 +46,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
             namespace:=$(arg namespace)
             suffix_ns:=$(arg namespace)/
             laser_enabled:=$(arg laser_enabled)
+            os1_enabled:=$(arg os1_enabled)
             realsense_enabled:=$(arg realsense_enabled)
             urdf_extras:=$(arg urdf_extras)
             " />

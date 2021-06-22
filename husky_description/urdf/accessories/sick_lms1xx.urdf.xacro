@@ -30,6 +30,37 @@
     <gazebo reference="${frame}">
       <turnGravityOff>true</turnGravityOff>
       <!-- start -->
+      <sensor type="ray" name="${frame}_360">
+        <pose>0 0 0 0 0 0</pose>
+        <visualize>false</visualize>
+        <update_rate>${update_rate}</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.141592</min_angle>
+              <max_angle>3.141592</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>${min_range}</min>
+            <max>${max_range}</max>
+            <resolution>0.01</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.001</stddev>
+          </noise>
+        </ray>
+        <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
+          <topicName>${topic}_360</topicName>
+          <frameName>${frame}</frameName>
+          <robotNamespace>${robot_namespace}</robotNamespace>
+        </plugin>
+      </sensor>
+      <!-- end-->
       <sensor type="ray" name="${frame}">
         <pose>0 0 0 0 0 0</pose>
         <visualize>false</visualize>
@@ -60,7 +91,6 @@
           <robotNamespace>${robot_namespace}</robotNamespace>
         </plugin>
       </sensor>
-      <!-- end-->
     </gazebo>
   </xacro:macro>
 </robot>
