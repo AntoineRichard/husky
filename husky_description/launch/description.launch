@@ -28,7 +28,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <arg name="namespace" default=""/>
   <arg name="laser_enabled" default="$(optenv HUSKY_LMS1XX_ENABLED false)"/>
   <arg name="realsense_enabled" default="$(optenv HUSKY_REALSENSE_ENABLED false)"/>
-  <arg name="os1_enabled" default="$(optenv HUSKY_OS1_ENABLED false)"/>
+  <arg name="os1_enabled" default="$(optenv HUSKY_OS1_ENABLED true)"/>
   <arg name="urdf_extras" default="$(optenv HUSKY_URDF_EXTRAS)"/>
 
   <group if="$(eval namespace == '')" >

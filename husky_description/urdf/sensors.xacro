@@ -14,7 +14,7 @@
       <rateDrift>0.005 0.005 0.005 </rateDrift>
       <rateGaussianNoise>0.005 0.005 0.005 </rateGaussianNoise>
       <headingDrift>0.005</headingDrift>
-      <headingGaussianNoise>0.005</headingGaussianNoise>
+      <headingGaussianNoise>0.0001</headingGaussianNoise>
     </plugin>
   </gazebo>
 
@@ -22,7 +22,7 @@
   <gazebo>
     <plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
       <robotNamespace>/$(arg namespace)</robotNamespace>
-      <updateRate>5</updateRate>
+      <updateRate>10</updateRate>
       <bodyName>$(arg suffix_ns)base_link</bodyName>
       <frameId>$(arg suffix_ns)base_link</frameId>
       <topicName>/$(arg suffix_ns)navsat/fix</topicName>
@@ -31,8 +31,8 @@
       <referenceLongitude>8.9</referenceLongitude>
       <referenceHeading>0</referenceHeading>
       <referenceAltitude>0</referenceAltitude>
-      <gaussianNoise>0.005 0.005 0.005</gaussianNoise>
-      <drift>0.0001 0.0001 0.0001</drift>
+      <gaussianNoise>0.000 0.000 0.000</gaussianNoise>
+      <drift>0.0000 0.0000 0.0000</drift>
     </plugin>
   </gazebo>
 
